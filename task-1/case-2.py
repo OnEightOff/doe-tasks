@@ -32,11 +32,11 @@ def random_uuid():
                           "%02x" * 6]) % tuple(uid)                   
 
 
-device_num = int(input("Enter a number to generate fake data: "))
-
+device_num_start = int(input("Enter the number from where to list data: "))
+device_num_end = int(input("Enter the number to end the data: "))
 print("Device no" + ", \t" + "Device UID " + ", \t" + "Ethernet MAC Address" + ", \t" + "Wifi MAC Address")
 
 
-for no in range(1, device_num+1):
+for no in range(device_num_start, device_num_end+1):
 # Add device_num+1 since a list begins with 0
     print(str(no) + ', \t' + random_uuid() + ', \t' + random_mac() + ', \t' +  random_mac())
