@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 
 import random
+import argparse
+import sys
 
 def random_mac():
     """
@@ -31,11 +33,21 @@ def random_uuid():
     return "-".join(["%02x" * 4, "%02x" * 2, "%02x" * 2, "%02x" * 2,
                           "%02x" * 6]) % tuple(uid)                   
 
+def parser_args():
+    parser = argparse.ArgumentParser(
+        prog='case-2.py',
+        description='List the no. of devices from the specified numbers.'
+        )
+    parser.add_argument('--begin', type=int, help='The starting no. to generate the data')
+    parser.add_argument('--end', type=int, help='The end no. to generate the data')
+    args = parser.parse_args()
+#    print(args)
+    return args.begin, args.end
 
-device_num_start = int(input("Enter the number from where to list data: "))
-device_num_end = int(input("Enter the number to end the data: "))
+
+device_num_start, device_num_end = parser_args()
+
 print("Device no" + ", \t" + "Device UID " + ", \t" + "Ethernet MAC Address" + ", \t" + "Wifi MAC Address")
-
 
 for no in range(device_num_start, device_num_end+1):
 # Add device_num+1 since a list begins with 0
